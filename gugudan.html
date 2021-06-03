@@ -10,30 +10,32 @@
   <div id="root"></div>
   <script type="text/babel">
     class GuGuDan extends React.Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          first: Math.ceil(Math.random() * 9),
-          second: Math.ceil(Math.random() * 9),
-          value: '',
-          result: '',
-        }
+      state = {
+        first: Math.ceil(Math.random() * 9),
+        second: Math.ceil(Math.random() * 9),
+        value: '',
+        result: '',
       }
 
       onSubmit = (e) => {
         e.preventDefault();
         if(parseInt(this.state.value) === this.state.first * this.state.second) {
-          this.setState({
-            first: Math.ceil(Math.random() * 9),
-            second: Math.ceil(Math.random() * 9),
-            value: '',
-            result: '딩동댕',
+          this.setState((prevState) => {
+            // 이전값(이전 state의 값)으로 새로운 state를 만들 땐 return해주는 함수를 써야 좋음
+            return {
+              first: Math.ceil(Math.random() * 9),
+              second: Math.ceil(Math.random() * 9),
+              value: '',
+              result: prevState.value + ' 딩동댕',
+            };
           });
+          this.input.focus();
         } else {
           this.setState({
             value: '',
-            result: '땡',
+            result: this.state.value + ' 땡',
           });
+          this.input.focus();
         }
       };
 
@@ -41,12 +43,14 @@
         this.setState({value: e.target.value});
       };
 
+      onRefInput = (c) => {this.input = c;};
+
       render() {
         return (
           <React.Fragment>
             <div>{this.state.first} X {this.state.second} = ?</div>
             <form onSubmit={this.onSubmit}>
-                <input type="number" value={this.state.value} onChange={this.onChange} />
+                <input ref={this.onRefInput} type="number" value={this.state.value} onChange={this.onChange} />
                 <button>입력</button>
             </form>
             <div>{this.state.result}</div>
@@ -56,7 +60,7 @@
     }
   </script>
   <script type="text/babel">
-    ReactDOM.render(<div><GuGuDan /><GuGuDan /></div>, document.querySelector('#root'));
+    ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
   </script>
 </body>
 </html>
