@@ -29,6 +29,7 @@ const NumberBaseball = () => {
       setValue('');
       setAnswer(getNumbers());
       setTries([]);
+      inputEl.current.focus();
     } else {
       const answerArray = value.split('').map((v) => parseInt(v));
       let strike = 0;
@@ -39,6 +40,7 @@ const NumberBaseball = () => {
         setValue('');
         setAnswer(getNumbers());
         setTries([]);
+        inputEl.current.focus();
       } else {
         for(let i = 0; i < 4; i += 1) {
           if(answerArray[i] === answer[i]) {
@@ -49,6 +51,7 @@ const NumberBaseball = () => {
         }
         setTries((prevTries) => [...prevState.tries, { try: value, result: `${strike} 스트라이크, ${ball} 볼입니다`}]);
         setValue('');
+        inputEl.current.focus();
       }
     }
   };
