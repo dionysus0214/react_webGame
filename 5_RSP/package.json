@@ -1,0 +1,35 @@
+{
+  "name": "webgame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --env development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dionysus0214/react_webGame.git"
+  },
+  "author": "dionysus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dionysus0214/react_webGame/issues"
+  },
+  "homepage": "https://github.com/dionysus0214/react_webGame#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "babel-loader": "^8.2.2",
+    "react-refresh": "^0.9.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
