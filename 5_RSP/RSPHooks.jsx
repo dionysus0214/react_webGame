@@ -18,35 +18,13 @@ const computerChoice = (imgCoord) => {
   })[0];
 };
 
-//                        result, imgCoord, score
-// componentDidMount
-// componentDidUpdate
-// componentWillUnmount
-
-// componentDidMount() {
-//   this.setState({
-//     imgCoord: 3,
-//     score: 1,
-//     result: 2,
-//   })
-// }
-
-// useEffect(() => {
-//   setImgCoord();
-//   setScore();
-// }, [imgCoord, score]);
-// useEffect(() => {
-//   setResult();
-// }, [result]);
-
-
 const RSP = () => {
   const [result, setResult] = useState('');
   const [imgCoord, setImgCoord] = useState(rspCoords.바위);
   const [score, setScore] = useState(0);
   const interval = useRef();
 
-  useEffect(() => { // componentDidMount, componentDidUpdate 역할(1대1 대응은 아님)
+  useEffect(() => { // componentDidMount, componentDidUpdate 역할(1:1 대응은 아님)
     console.log('다시 실행');
     interval.current = setInterval(changeHand, 100);
     return () => { // componentWillUnmount 역할
