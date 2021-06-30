@@ -25,8 +25,8 @@ const reducer = (state, action) => {
         winner: action.winner,
       };
     case CLICK_CELL: {
-      const tableData = [...state.tableData];
-      tableData[action.row] = [...tableData[action.row]]; 
+      const tableData = [...state.tableData]; // ...: 얕은 복사(불변성을 지킬 수 있음)
+      tableData[action.row] = [...tableData[action.row]]; // immer라는 라이브러리로 가독성 해결
       tableData[action.row][action.cell] = state.turn;
       return {
         ...state,
